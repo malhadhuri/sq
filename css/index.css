@@ -4,16 +4,13 @@ html, body {
     padding: 0;
     overflow: hidden;
     background: #222222;
-    will-change: background; /* تحسين الرسوم المتحركة للـ background */
 }
-
 body {
     min-height: 100vh;
     min-width: 100vw;
     position: relative;
     font-family: 'Segoe UI', Arial, sans-serif;
 }
-
 .header {
     z-index: 2;
     position: fixed;
@@ -23,9 +20,7 @@ body {
     display: flex;
     justify-content: left;
     pointer-events: none;
-    transition: top 0.3s ease-out; /* تحسين سلاسة التمرير */
 }
-
 .header-title {
     color: #FFF;
     font-size: 20px;
@@ -37,7 +32,6 @@ body {
     padding: 10px 48px;
     pointer-events: auto;
     border: 3px solid #ffd900;
-    transition: all 0.3s ease; /* تحسين التفاعل */
 }
 
 /* Center Button Wrapper */
@@ -68,7 +62,6 @@ body {
     transition: box-shadow 0.22s, transform 0.18s;
     position: relative;
     transition: 0.5s;
-    will-change: transform, box-shadow; /* تحسين الأداء عند تحريك الزر */
 }
 
 .ps-btn:hover {
@@ -78,17 +71,18 @@ body {
     background: rgb(64, 64, 64);
 }
 
+.ps-btn svg:hover {
+    transform: scale(1.07);
+    transition: 0.5s;
+    fill: #ffe600;
+}
+
 .ps-btn svg {
     width: 67px;
     height: 67px;
     filter: drop-shadow(0 0px 13px #0282ff33);
     fill: #008cff;
     transition: 0.5s;
-}
-
-.ps-btn svg:hover {
-    transform: scale(1.07);
-    fill: #ffe600;
 }
 
 /* Console */
@@ -109,7 +103,6 @@ body {
     right: 5px;
     overflow-y: auto;
     overflow-x: hidden;
-    will-change: height, padding; /* تحسين أداء الـ console */
 }
 
 /* Floating Menu */
@@ -120,7 +113,6 @@ body {
     z-index: 1000;
     display: flex;
     gap: 10px;
-    transition: all 0.3s ease; /* تحسين سلاسة العناصر */
 }
 
 .menu-btn {
@@ -132,7 +124,7 @@ body {
     cursor: pointer;
     font-size: 15px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    transition: all 0.3s ease;
+    transition: all 0.3s;
     margin-left: 10px;
 }
 
@@ -154,7 +146,6 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     width: 300px;
     border-radius: 5px;
-    will-change: transform, opacity; /* تحسين الرسوم المتحركة */
 }
 
 .overlay {
@@ -166,7 +157,6 @@ body {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 1000;
-    will-change: opacity; /* تحسين الرسوم المتحركة */
 }
 
 .close-btn {
@@ -197,7 +187,6 @@ body {
     top: 40%;
     left: 5px;
     right: 5px;
-    will-change: grid-template-columns; /* تحسين الأداء عند التغيير في التصميم */
 }
 
 #button-container button {
@@ -233,7 +222,6 @@ body {
     border-radius: 15px;
     box-shadow: 0 2px 5px rgb(34, 34, 34);
     z-index: 1000;
-    will-change: transform; /* تحسين الرسوم المتحركة */
 }
 
 .floating-menu-payloads button {
