@@ -2,8 +2,17 @@
 <html manifest="./PSFree.manifest">
   <head>
     <script>
-        function DLProgress(e){Percent=(Math.round(e.loaded / e.total * 100));document.title="Installing offline cache: " + Percent + "%";}
-        function DisplayCacheProgress(){setTimeout(function(){;document.title="Cache Success !";},1000);setTimeout(function(){window.location.href = document.referrer;},3000);}window.applicationCache.addEventListener("progress",DLProgress,false);window.applicationCache.oncached=function(e){DisplayCacheProgress();};window.applicationCache.onupdateready=function(e){DisplayCacheProgress();};
+        function DLProgress(e){
+          Percent = (Math.round(e.loaded / e.total * 100));
+          document.title = "Installing offline cache: " + Percent + "%";
+        }
+        function DisplayCacheProgress(){
+          setTimeout(function(){ document.title = "Cache Success !"; }, 1000);
+          setTimeout(function(){ window.location.href = document.referrer; }, 3000);
+        }
+        window.applicationCache.addEventListener("progress", DLProgress, false);
+        window.applicationCache.oncached = function(e) { DisplayCacheProgress(); };
+        window.applicationCache.onupdateready = function(e) { DisplayCacheProgress(); };
     </script>
     <meta charset="UTF-8">
     <title>Squad Game GOLD-HEN</title>
@@ -11,19 +20,28 @@
     <style>
       /* تعديل تصميم الزر ليظهر كشعار فقط */
       #jailbreak {
-        background-image: url('squad.jpg'); /* تحديد مسار الصورة */
-        background-size: contain; /* لجعل الصورة تتناسب مع حجم الزر */
-        background-repeat: no-repeat; /* عدم تكرار الصورة */
-        background-position: center; /* وضع الصورة في وسط الزر */
-        border: none; /* إزالة الحدود */
-        padding: 0; /* إزالة الحشو */
-        width: 150px; /* زيادة عرض الزر 3 مرات */
-        height: 150px; /* زيادة ارتفاع الزر 3 مرات */
-        display: inline-block; /* لعرض الزر بشكل متناسق */
+        background-image: url('squad.jpg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        border: none;
+        padding: 0;
+        width: 150px;
+        height: 150px;
+        display: inline-block;
+      }
+      #jailbreak:hover {
+        cursor: pointer;
       }
 
-      #jailbreak:hover {
-        cursor: pointer; /* إضافة تأثير عند المرور بالماوس */
+      /* إخفاء المربعات التي تحتوي على PSFree و About و Payloads */
+      .header-title, #about-popup, #overlay-popup, #about-btn {
+        display: none;
+      }
+
+      /* إخفاء زر Payloads */
+      #payloadsbtn {
+        display: none;
       }
     </style>
   </head>
@@ -33,10 +51,11 @@
       <button onclick="showpayloads()" class="menu-btn" id="payloadsbtn">Payloads</button>
       <button class="menu-btn" id="generate-cache-btn">Force-Cache</button>
       <button class="menu-btn" id="update-exploit">Update-Exploit</button>
-      <!--<button onclick="showpayloads()" class="menu-btn" id="payloadsbtn">Settings</button>-->
-      <button onclick="showabout()" class="menu-btn" id="about-btn">About</button>
+      <!-- حذف زر "About" لأنه مخفي الآن -->
+      <!--<button onclick="showabout()" class="menu-btn" id="about-btn">About</button>-->
     </div>
 
+    <!-- إخفاء الـ header الذي يحتوي على PSFree -->
     <div class="header">
       <div class="header-title">PSFree</div>
     </div>
@@ -100,9 +119,9 @@
       <button  onclick="closeabout()" close-btn" id="close-about">Close</button>
     </div>
 
-    <script src='./js/index.js'></script>
+    <script src='./js/index.js' defer></script>
     <script>
-      CheckFW()
+      CheckFW();
     </script>
   </body>
 </html>
