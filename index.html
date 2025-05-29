@@ -1,67 +1,43 @@
 <!DOCTYPE html>
 <html manifest="./PSFree.manifest">
   <head>
-    <script>
-        function DLProgress(e){
-          Percent = (Math.round(e.loaded / e.total * 100));
-          document.title = "Installing offline cache: " + Percent + "%";
-        }
-        function DisplayCacheProgress(){
-          setTimeout(function(){ document.title = "Cache Success !"; }, 1000);
-          setTimeout(function(){ window.location.href = document.referrer; }, 3000);
-        }
-        window.applicationCache.addEventListener("progress", DLProgress, false);
-        window.applicationCache.oncached = function(e) { DisplayCacheProgress(); };
-        window.applicationCache.onupdateready = function(e) { DisplayCacheProgress(); };
-    </script>
     <meta charset="UTF-8">
     <title>Squad Game GOLD-HEN</title>
     <link rel='stylesheet' href='./css/index.css'>
     <style>
       /* تعديل تصميم الزر ليظهر كشعار فقط */
       #jailbreak {
-        background-image: url('squad.jpg');
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
-        border: none;
-        padding: 0;
-        width: 150px;
-        height: 150px;
-        display: inline-block;
+        background-image: url('squad.jpg'); /* تحديد مسار الصورة */
+        background-size: contain; /* لجعل الصورة تتناسب مع حجم الزر */
+        background-repeat: no-repeat; /* عدم تكرار الصورة */
+        background-position: center; /* وضع الصورة في وسط الزر */
+        border: none; /* إزالة الحدود */
+        padding: 0; /* إزالة الحشو */
+        width: 150px; /* زيادة عرض الزر 3 مرات */
+        height: 150px; /* زيادة ارتفاع الزر 3 مرات */
+        display: inline-block; /* لعرض الزر بشكل متناسق */
       }
+
       #jailbreak:hover {
-        cursor: pointer;
+        cursor: pointer; /* إضافة تأثير عند المرور بالماوس */
       }
 
-      /* إخفاء المربعات التي تحتوي على PSFree و About و Payloads */
-      .header-title, #about-popup, #overlay-popup, #about-btn {
-        display: none;
-      }
-
-      /* إخفاء زر Payloads */
-      #payloadsbtn {
+      /* إزالة المربعات العلوية الخاصة بـ PSFree و Payloads و About */
+      .header, .floating-menu, #about-btn, #payloadsbtn {
         display: none;
       }
     </style>
   </head>
   <body>
-    <!-- Floating Menu -->
-    <div class="floating-menu">
+    <!-- Floating Menu (تمت إزالته) -->
+    <!-- <div class="floating-menu">
       <button onclick="showpayloads()" class="menu-btn" id="payloadsbtn">Payloads</button>
       <button class="menu-btn" id="generate-cache-btn">Force-Cache</button>
       <button class="menu-btn" id="update-exploit">Update-Exploit</button>
-      <!-- حذف زر "About" لأنه مخفي الآن -->
-      <!--<button onclick="showabout()" class="menu-btn" id="about-btn">About</button>-->
-    </div>
+      <button onclick="showabout()" class="menu-btn" id="about-btn">About</button>
+    </div> -->
 
-    <!-- إخفاء الـ header الذي يحتوي على PSFree -->
-    <div class="header">
-      <div class="header-title">PSFree</div>
-    </div>
-
-    <pre id="update-results" style="white-space: pre-wrap; margin-top: 10px;"></pre>
-
+    <!-- الصفحات الرئيسية (إزالة المربعات العلوية) -->
     <h2 id="PS4FW">PS4 FW: 0.00 | Compatible</h2>
 
     <div id="jailbreak-page">
@@ -75,42 +51,8 @@
         </label>
       </div>
     </div>
-    
-    <div id="payloads-page" style="display: none;">
-      <nav class="floating-menu-payloads">
-        <button onclick="showtoolspayloads()">Tools</button>
-        <button onclick="showgamepayloads()">Games</button>
-        <button onclick="showlinuxpayloads()">Linux</button>
-      </nav>
-      <div id="payloads-tools" style="display: block;">
-        <h2 id="tools">Tools</h2>
-        <div id="button-container">
-          <button id="binloader">Bin-Loader</button>
-          <!-- المزيد من الأزرار... -->
-        </div>
-      </div>
-      <div id="payloads-game" style="display: none;">
-        <h2 id="tools">Game</h2>
-        <div id="button-container">
-          <button data-func="load_GTAArbic">GTAV-ArabicGuy-1.27</button>
-          <!-- المزيد من الأزرار... -->
-        </div>
-      </div>
-      <div id="payloads-linux" style="display: none;">
-        <h2 id="tools">Linux</h2>
-        <div id="button-container">
-          <button data-func="load_Linux">Linux-1GB</button>
-          <!-- المزيد من الأزرار... -->
-        </div>
-      </div>
-    </div>
 
-    <div id="DebugConsole">
-      <h3>Debug Console</h3>
-      <div class="console" style="padding: 20px;"><pre id='console'></pre></div>
-    </div>
-
-    <!-- About Popup -->
+    <!-- About Popup (إزالة المربعات الخاصة بـ About) -->
     <div class="overlay" id="overlay-popup"></div>
     <div class="popup" id="about-popup">
       <h2>About PSFree</h2>
@@ -119,9 +61,9 @@
       <button  onclick="closeabout()" close-btn" id="close-about">Close</button>
     </div>
 
-    <script src='./js/index.js' defer></script>
+    <script src='./js/index.js'></script>
     <script>
-      CheckFW();
+      CheckFW()
     </script>
   </body>
 </html>
