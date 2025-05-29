@@ -1,151 +1,108 @@
 <!DOCTYPE html>
 <html manifest="./PSFree.manifest">
-<head>
-  <meta charset="UTF-8">
-  <title>Squad Game GOLD-HEN</title>
-  <link rel="stylesheet" href="./css/index.css">
-  <style>
-    body, html {
-      margin: 0;
-      padding: 0;
-      background: #222;
-      font-family: 'Segoe UI', Arial, sans-serif;
-      overflow: hidden;
-      height: 100%;
-      width: 100%;
-    }
-    .center-btn-wrap {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      z-index: 10;
-    }
-    #jailbreak {
-      background-image: url('squad.jpg');
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
-      border: none;
-      width: 150px;
-      height: 150px;
-      padding: 0;
-      display: inline-block;
-      cursor: pointer;
-    }
-    label {
-      font-size: 18px;
-      color: white;
-      margin-top: 15px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    #autogoldhen {
-      appearance: none;
-      width: 20px;
-      height: 20px;
-      border: 2px solid #ccc;
-      border-radius: 4px;
-      cursor: pointer;
-      position: relative;
-      background-color: white;
-      transition: border-color 0.3s, background-color 0.3s;
-    }
-    #autogoldhen:checked {
-      background-color: #6f707433;
-      border-color: #b3b000;
-    }
-    #autogoldhen:checked::after {
-      content: "";
-      position: absolute;
-      left: 4px;
-      top: 1px;
-      width: 5px;
-      height: 10px;
-      border: solid yellow;
-      border-width: 0 3px 3px 0;
-      transform: rotate(45deg);
-    }
-    #PS4FW {
-      color: white;
-      text-align: center;
-      margin-top: 10px;
-    }
-    h3 {
-      color: white;
-      font-size: 1em;
-      font-weight: bold;
-      letter-spacing: .08em;
-      background: #6f707433;
-      border-radius: 18px;
-      padding: 10px;
-      position: absolute;
-      bottom: 25%;
-      left: 5%;
-    }
-    #console {
-      color: #FFF;
-      background-color: #6f707433;
-      border-radius: 18px;
-      width: 90%;
-      height: 18%;
-      margin: 0 auto;
-      border: 1px solid #ffd900;
-      padding: 10px;
-      display: flex;
-      align-items: center;
-      position: absolute;
-      bottom: 20px;
-      left: 5px;
-      right: 5px;
-      overflow-y: auto;
-      overflow-x: hidden;
-    }
-  </style>
-  <script>
-    function DLProgress(e) {
-      let Percent = (Math.round(e.loaded / e.total * 100));
-      document.title = "Installing offline cache: " + Percent + "%";
-    }
+  <head>
+    <script>
+        function DLProgress(e){Percent=(Math.round(e.loaded / e.total * 100));document.title="Installing offline cache: " + Percent + "%";}
+        function DisplayCacheProgress(){setTimeout(function(){;document.title="Cache Success !";},1000);setTimeout(function(){window.location.href = document.referrer;},3000);}window.applicationCache.addEventListener("progress",DLProgress,false);window.applicationCache.oncached=function(e){DisplayCacheProgress();};window.applicationCache.onupdateready=function(e){DisplayCacheProgress();};
+    </script>
+    <meta charset="UTF-8">
+    <title>Squad Game GOLD-HEN</title>
+    <link rel='stylesheet' href='./css/index.css'>
+    <style>
+      /* تعديل تصميم الزر ليظهر كشعار فقط */
+      #jailbreak {
+        background-image: url('squad.jpg'); /* تحديد مسار الصورة */
+        background-size: contain; /* لجعل الصورة تتناسب مع حجم الزر */
+        background-repeat: no-repeat; /* عدم تكرار الصورة */
+        background-position: center; /* وضع الصورة في وسط الزر */
+        border: none; /* إزالة الحدود */
+        padding: 0; /* إزالة الحشو */
+        width: 150px; /* زيادة عرض الزر 3 مرات */
+        height: 150px; /* زيادة ارتفاع الزر 3 مرات */
+        display: inline-block; /* لعرض الزر بشكل متناسق */
+      }
 
-    function DisplayCacheProgress() {
-      setTimeout(() => { document.title = "Cache Success !"; }, 1000);
-      setTimeout(() => { window.location.href = document.referrer; }, 3000);
-    }
-
-    window.applicationCache.addEventListener("progress", DLProgress, false);
-    window.applicationCache.oncached = () => DisplayCacheProgress();
-    window.applicationCache.onupdateready = () => DisplayCacheProgress();
-  </script>
-</head>
-<body>
-  <h2 id="PS4FW">PS4 FW: 0.00 | Compatible</h2>
-
-  <div class="center-btn-wrap">
-    <button id="jailbreak" title="PlayStation"></button>
-    <label>
-      <input type="checkbox" id="autogoldhen" />
-      <p id="agtext">Auto-GoldHEN</p>
-    </label>
-  </div>
-
-  <div id="DebugConsole">
-    <h3>Debug Console</h3>
-    <div class="console" style="padding: 20px;">
-      <pre id='console'></pre>
+      #jailbreak:hover {
+        cursor: pointer; /* إضافة تأثير عند المرور بالماوس */
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Floating Menu -->
+    <div class="floating-menu">
+      <button onclick="showpayloads()" class="menu-btn" id="payloadsbtn">Payloads</button>
+      <button class="menu-btn" id="generate-cache-btn">Force-Cache</button>
+      <button class="menu-btn" id="update-exploit">Update-Exploit</button>
+      <!--<button onclick="showpayloads()" class="menu-btn" id="payloadsbtn">Settings</button>-->
+      <button onclick="showabout()" class="menu-btn" id="about-btn">About</button>
     </div>
-  </div>
 
-  <script src="./js/index.js"></script>
-  <script>
-    CheckFW();
-    document.getElementById("jailbreak").addEventListener("click", () => {
-      go(); // This should call your GoldHEN loader function
-    });
-  </script>
-</body>
+    <div class="header">
+      <div class="header-title">PSFree</div>
+    </div>
+
+    <pre id="update-results" style="white-space: pre-wrap; margin-top: 10px;"></pre>
+
+    <h2 id="PS4FW">PS4 FW: 0.00 | Compatible</h2>
+
+    <div id="jailbreak-page">
+      <div class="center-btn-wrap">
+        <button id="jailbreak" class="ps-btn" title="PlayStation">
+          <!-- الشعار الآن يظهر كخلفية في الزر باستخدام CSS -->
+        </button>
+        <label>
+          <input type="checkbox" id="autogoldhen" />
+          <p id="agtext">Auto-GoldHEN</p>
+        </label>
+      </div>
+    </div>
+    
+    <div id="payloads-page" style="display: none;">
+      <nav class="floating-menu-payloads">
+        <button onclick="showtoolspayloads()">Tools</button>
+        <button onclick="showgamepayloads()">Games</button>
+        <button onclick="showlinuxpayloads()">Linux</button>
+      </nav>
+      <div id="payloads-tools" style="display: block;">
+        <h2 id="tools">Tools</h2>
+        <div id="button-container">
+          <button id="binloader">Bin-Loader</button>
+          <!-- المزيد من الأزرار... -->
+        </div>
+      </div>
+      <div id="payloads-game" style="display: none;">
+        <h2 id="tools">Game</h2>
+        <div id="button-container">
+          <button data-func="load_GTAArbic">GTAV-ArabicGuy-1.27</button>
+          <!-- المزيد من الأزرار... -->
+        </div>
+      </div>
+      <div id="payloads-linux" style="display: none;">
+        <h2 id="tools">Linux</h2>
+        <div id="button-container">
+          <button data-func="load_Linux">Linux-1GB</button>
+          <!-- المزيد من الأزرار... -->
+        </div>
+      </div>
+    </div>
+
+    <div id="DebugConsole">
+      <h3>Debug Console</h3>
+      <div class="console" style="padding: 20px;"><pre id='console'></pre></div>
+    </div>
+
+    <!-- About Popup -->
+    <div class="overlay" id="overlay-popup"></div>
+    <div class="popup" id="about-popup">
+      <h2>About PSFree</h2>
+      <p>Version: 9.00</p>
+      <p>A simple web interface for PS4 jailbreak.</p>
+      <button  onclick="closeabout()" close-btn" id="close-about">Close</button>
+    </div>
+
+    <script src='./js/index.js'></script>
+    <script>
+      CheckFW()
+    </script>
+  </body>
 </html>
