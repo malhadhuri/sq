@@ -1,12 +1,10 @@
 CACHE MANIFEST
 # v1
-# Generated on 2025-05-28 11:45:35.388256
+# Generated on 2025-06-24 23:41:48.429776
 
 CACHE:
 index.html
 css/index.css
-fonts/FONTS.LICENSE
-fonts/LiberationMono-Regular.ttf
 js/index.js
 payloads/Jailbreak.js
 payloads/payloads.js
@@ -34,6 +32,7 @@ payloads/Bins/RDR2/OystersMenu-1.19-FREE.bin
 payloads/Bins/RDR2/OystersMenu-1.24-FREE.bin
 payloads/Bins/RDR2/OystersMenu-1.29-FREE.bin
 payloads/Bins/Tools/app2usb.bin
+payloads/Bins/Tools/appcache-install.bin
 payloads/Bins/Tools/backupdb.bin
 payloads/Bins/Tools/disableaslr.bin
 payloads/Bins/Tools/disableupdates.bin
@@ -56,15 +55,47 @@ payloads/Bins/Tools/ToDex.bin
 payloads/Bins/Tools/ToKratos.bin
 payloads/Bins/Tools/WebRTE_900.bin
 payloads/GoldHEN/GoldHEN.bin
-payloads/HEN/HEN.bin
+payloads/HEN/HEN-700.bin
+payloads/HEN/HEN-701.bin
+payloads/HEN/HEN-702.bin
+payloads/HEN/HEN-750.bin
+payloads/HEN/HEN-751.bin
+payloads/HEN/HEN-755.bin
+payloads/HEN/HEN-800.bin
+payloads/HEN/HEN-801.bin
+payloads/HEN/HEN-803.bin
+payloads/HEN/HEN-850.bin
+payloads/HEN/HEN-852.bin
+payloads/HEN/HEN-900.bin
+payloads/HEN/HEN-903.bin
+payloads/HEN/HEN-904.bin
+payloads/HEN/HEN-950.bin
+payloads/HEN/HEN-951.bin
+payloads/HEN/HEN-960.bin
 psfree/alert.mjs
 psfree/config.mjs
 psfree/lapse.mjs
 psfree/psfree.mjs
 psfree/send.mjs
-psfree/kpatch/900.elf
+psfree/fonts/FONTS.LICENSE
+psfree/fonts/LiberationMono-Regular.ttf
+psfree/kpatch/700.bin
+psfree/kpatch/750.bin
+psfree/kpatch/800.bin
+psfree/kpatch/850.bin
+psfree/kpatch/900.bin
+psfree/kpatch/903.bin
+psfree/kpatch/950.bin
+psfree/lapse/ps4/700.mjs
+psfree/lapse/ps4/750.mjs
+psfree/lapse/ps4/751.mjs
+psfree/lapse/ps4/800.mjs
+psfree/lapse/ps4/850.mjs
+psfree/lapse/ps4/852.mjs
+psfree/lapse/ps4/900.mjs
+psfree/lapse/ps4/903.mjs
+psfree/lapse/ps4/950.mjs
 psfree/module/chain.mjs
-psfree/module/constants.mjs
 psfree/module/int64.mjs
 psfree/module/mem.mjs
 psfree/module/memtools.mjs
@@ -72,7 +103,12 @@ psfree/module/offset.mjs
 psfree/module/rw.mjs
 psfree/module/utils.mjs
 psfree/module/view.mjs
-psfree/rop/900.mjs
+psfree/rop/ps4/700.mjs
+psfree/rop/ps4/750.mjs
+psfree/rop/ps4/800.mjs
+psfree/rop/ps4/850.mjs
+psfree/rop/ps4/900.mjs
+psfree/rop/ps4/950.mjs
 
 NETWORK:
 *
